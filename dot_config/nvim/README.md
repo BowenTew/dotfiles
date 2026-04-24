@@ -231,7 +231,7 @@ vim.opt.shiftwidth = 4
 ### UI
 - [x] **base46** / tokyonight.nvim / catppuccin / onedark / yorumi — Color schemes
 - [x] alpha-nvim — Startup dashboard
-- [x] nvim-notify — Notification UI
+- [x] noice.nvim — Notification / cmdline / messages UI (replaces nvim-notify)
 - [x] noice.nvim — Cmdline / message UI
 - [x] nvim-web-devicons — File icons
 - [x] neo-tree.nvim — File tree explorer
@@ -246,10 +246,10 @@ vim.opt.shiftwidth = 4
 - [x] LuaSnip — Snippet engine
 - [x] nvim-autopairs — Auto bracket pairing
 - [x] Comment.nvim — Quick commenting
-- [x] nvim-surround — Surround text objects
+- [x] nvim-surround — Surround text objects (v4+ simplified config)
 - [x] indent-blankline.nvim — Indent guides
 - [x] flash.nvim — Fast jumping
-- [x] multicursors.nvim — Multi-cursor editing
+- [x] multicursors.nvim — Multi-cursor editing (uses nvimtools/hydra.nvim)
 - [x] hlslens.nvim — Search highlight enhancement
 - [x] rainbow-delimiters.nvim — Rainbow brackets
 - [x] todo-comments.nvim — TODO highlighting

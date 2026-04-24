@@ -231,7 +231,7 @@ vim.opt.shiftwidth = 4
 ### UI
 - [x] **base46** / tokyonight.nvim / catppuccin / onedark / yorumi — 配色方案
 - [x] alpha-nvim — 启动页
-- [x] nvim-notify — 通知美化
+- [x] noice.nvim — 通知/命令行/消息 UI 美化（替代 nvim-notify）
 - [x] noice.nvim — 命令行/消息 UI 美化
 - [x] nvim-web-devicons — 文件图标
 - [x] neo-tree.nvim — 文件树浏览器
@@ -246,10 +246,10 @@ vim.opt.shiftwidth = 4
 - [x] LuaSnip — 代码片段
 - [x] nvim-autopairs — 自动括号配对
 - [x] Comment.nvim — 快速注释
-- [x] nvim-surround — 环绕字符操作
+- [x] nvim-surround — 环绕字符操作（v4+ 简化配置）
 - [x] indent-blankline.nvim — 缩进线
 - [x] flash.nvim — 快速跳转
-- [x] multicursors.nvim — 多光标编辑
+- [x] multicursors.nvim — 多光标编辑（使用 nvimtools/hydra.nvim）
 - [x] hlslens.nvim — 搜索高亮增强
 - [x] rainbow-delimiters.nvim — 彩虹括号
 - [x] todo-comments.nvim — TODO 高亮
