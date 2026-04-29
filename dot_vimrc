@@ -1,0 +1,58 @@
+" ============================================================
+" Vim Configuration — Semantic Modular Setup
+" Migrated from Nix (modules/common/vim) to chezmoi
+" ============================================================
+
+set nocompatible
+
+" ----------------------------------------------------------
+" Plugin Manager: vim-plug
+" ----------------------------------------------------------
+call plug#begin('~/.vim/plugged')
+
+" Themes & UI
+Plug 'rakr/vim-one'
+Plug 'sainnhe/gruvbox-material'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" File tree & Navigation
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'majutsushi/tagbar'
+
+" Fuzzy finder (requires fzf installed system-wide)
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Git integration
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" LSP / Completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Editing enhancements
+Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
+
+" Startup screen
+Plug 'mhinz/vim-startify'
+
+" Go development
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+call plug#end()
+
+" ----------------------------------------------------------
+" Load semantic configuration modules
+" Order mirrors the original Nix readFile sequence
+" ----------------------------------------------------------
+runtime! config/settings.vim
+runtime! config/ui.vim
+runtime! config/git.vim
+runtime! config/coc.vim
+runtime! config/go.vim
+runtime! config/tagbar.vim
+runtime! config/shortcut/*.vim
