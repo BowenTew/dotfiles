@@ -1,0 +1,124 @@
+# ============================================================================
+# ~/.config/helix/config.toml
+# 经典 Helix 配置
+# ============================================================================
+
+theme = "catppuccin_mocha"
+
+[editor]
+# 基础显示
+line-number = "relative"
+cursorline = true
+color-modes = true
+true-color = true
+rulers = [80, 120]
+bufferline = "multiple"
+auto-save = true
+idle-timeout = 50
+
+# 滚动与移动
+scrolloff = 8
+mouse = true
+
+
+# 缩进
+
+indent-guides.render = true
+
+# 外观
+cursor-shape.insert = "bar"
+cursor-shape.normal = "block"
+cursor-shape.select = "underline"
+
+# LSP
+lsp.display-messages = true
+lsp.display-inlay-hints = true
+
+# 空白字符
+whitespace.render.space = "none"
+whitespace.render.tab = "all"
+whitespace.render.newline = "none"
+
+# 状态栏
+statusline.left = ["mode", "spinner", "file-name"]
+statusline.center = ["position-percentage"]
+statusline.right = ["diagnostics", "position", "file-encoding"]
+
+# 文件选择器
+file-picker.hidden = false
+
+# ============================================================================
+# Normal 模式键位
+# ============================================================================
+
+[keys.normal]
+# 快速保存
+"C-s" = ":w"
+
+# 窗口分割
+"A-minus" = "hsplit"
+
+# 诊断导航
+"]" = { d = "goto_next_diag" }
+"[" = { d = "goto_prev_diag" }
+
+# 跳转
+"g" = { d = "goto_definition", D = "goto_declaration", y = "goto_type_definition", r = "goto_reference", i = "goto_implementation", e = "goto_file_end", h = "goto_line_start", l = "goto_line_end" }
+
+# ============================================================================
+# Space 前缀命令
+# ============================================================================
+
+[keys.normal.space]
+# 文件
+f = "file_picker"
+F = "file_picker_in_current_directory"
+e = "file_explorer"
+n = [":new", "insert_mode"]
+
+# Buffer
+b = "buffer_picker"
+B = { b = "buffer_picker", n = "goto_next_buffer", p = "goto_previous_buffer" }
+
+# 搜索
+s = "global_search"
+S = "symbol_picker"
+
+# LSP
+a = "code_action"
+r = "rename_symbol"
+h = "hover"
+d = "diagnostics_picker"
+D = "workspace_diagnostics_picker"
+
+# Git
+g = "changed_file_picker"
+
+# 退出
+q = ":q"
+Q = ":q!"
+
+# 重载
+R = ":reload"
+
+# 系统剪贴板
+y = "yank_joined_to_clipboard"
+Y = "yank_main_selection_to_clipboard"
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
+
+# ============================================================================
+# Select 模式键位
+# ============================================================================
+
+[keys.select]
+# 保留选择缩进
+"<" = "indent"
+">" = "unindent"
+
+# ============================================================================
+# Insert 模式键位
+# ============================================================================
+
+[keys.insert]
+"C-s" = [":w", "normal_mode"]
