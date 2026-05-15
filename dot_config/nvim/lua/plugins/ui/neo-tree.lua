@@ -12,14 +12,22 @@ return {
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
   },
+  init = function()
+    if vim.fn.argc(-1) == 1 then
+      local stat = vim.uv.fs_stat(vim.fn.argv(0))
+      if stat and stat.type == "directory" then
+        require("neo-tree")
+      end
+    end
+  end,
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer Toggle" },
-    { "<leader>o", "<cmd>Neotree focus<cr>", desc = "Explorer Focus" },
+    { "<leader>e",  "<cmd>Neotree toggle<cr>",     desc = "Explorer Toggle" },
+    { "<leader>o",  "<cmd>Neotree focus<cr>",      desc = "Explorer Focus" },
     { "<leader>ge", "<cmd>Neotree git_status<cr>", desc = "Explorer Git Status" },
-    { "<leader>be", "<cmd>Neotree buffers<cr>", desc = "Explorer Buffers" },
+    { "<leader>be", "<cmd>Neotree buffers<cr>",    desc = "Explorer Buffers" },
   },
   opts = {
-    close_if_last_window = true,
+    close_if_last_window = false,
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
@@ -137,7 +145,7 @@ return {
         leave_dirs_open = false,
       },
       group_empty_dirs = false,
-      hijack_netrw_behavior = "open_default",
+      hijack_netrw_behavior = "open_current",
       use_libuv_file_watcher = false,
       window = {
         mappings = {
@@ -214,25 +222,5 @@ return {
   },
   config = function(_, opts)
     require("neo-tree").setup(opts)
-
-    -- 自动关闭当最后一个窗口时
-    vim.api.nvim_create_autocmd("BufEnter", {
-      group = vim.api.nvim_create_augroup("NeoTreeClose", { clear = true }),
-      pattern = "*",
-      callback = function()
-        local wins = vim.api.nvim_list_wins()
-        local count = 0
-        for _, win in ipairs(wins) do
-          local buf = vim.api.nvim_win_get_buf(win)
-          local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-          if ft ~= "neo-tree" then
-            count = count + 1
-          end
-        end
-        if count == 0 then
-          vim.cmd("quit")
-        end
-      end,
-    })
   end,
 }
