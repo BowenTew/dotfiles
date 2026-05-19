@@ -1,6 +1,8 @@
 return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
+  -- 把 lock 文件放到 ~/.config/nvim/ 下，方便 chezmoi 同步迁移
+  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
 
   ui = {
     icons = {
