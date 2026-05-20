@@ -108,6 +108,18 @@ return {
     },
   },
 
+  -- nvim-cmp：在 NvChad 默认基础上额外支持 ↑/↓ 切换补全项
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local cmp = require "cmp"
+      opts.mapping = opts.mapping or {}
+      opts.mapping["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }
+      opts.mapping["<Up>"]   = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }
+      return opts
+    end,
+  },
+
   -- Treesitter 语法高亮 / 缩进 / 折叠
   {
     "nvim-treesitter/nvim-treesitter",
