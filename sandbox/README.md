@@ -1,7 +1,4 @@
-# NvChad Sandbox (Docker)
-
-A throwaway container so you can experience the official NvChad starter
-(`v2.5`) without touching your host `~/.config/nvim`.
+# Sandbox (Docker)
 
 ## Build
 
@@ -53,34 +50,6 @@ Tip: pass a host folder if you want real code to play with:
 ```bash
 docker run -it --rm -v "$PWD:/work" -w /work nvchad-sandbox
 ```
-
-## What's inside
-
-| Piece             | Version / Source                            |
-|-------------------|---------------------------------------------|
-| Base image        | `alpine:3.21`                               |
-| Neovim            | distro pkg (≥ 0.10)                         |
-| NvChad framework  | `NvChad/NvChad@v2.5` (via lazy.nvim)        |
-| Starter config    | `NvChad/starter` main, cloned into `~/.config/nvim` |
-| Extras            | ripgrep, fzf, nodejs/npm, lazygit, tmux, gcc/make |
-
-All plugins are pre-installed in the image layer, so first launch is instant.
-
-## Key bindings to try
-
-| Key            | Action                          |
-|----------------|---------------------------------|
-| `<Space>`      | leader                          |
-| `<C-n>`        | toggle nvim-tree                |
-| `<leader>e`    | focus nvim-tree                 |
-| `<leader>ff`   | telescope find files            |
-| `<leader>fw`   | telescope live grep             |
-| `<leader>fb`   | telescope buffers               |
-| `<leader>th`   | NvChad theme picker (try it!)   |
-| `<leader>ch`   | NvCheatsheet (full keymap list) |
-| `<Tab>` / `<S-Tab>` | buffer cycle               |
-| `<leader>x`    | close buffer                    |
-| `<leader>gg`   | lazygit                         |
 
 ## Cleanup
 
