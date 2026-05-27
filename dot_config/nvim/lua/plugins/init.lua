@@ -91,9 +91,9 @@ return {
         view = "notify",
       },
       lsp = {
-        progress = { enabled = false }, -- 让 NvChad 自己的 LSP 进度条接管
-        hover = { enabled = false },    -- K hover 保持原生（与 NvChad 兼容）
-        signature = { enabled = true }, -- 但接管签名帮助
+        progress = { enabled = false }, 
+        hover = { enabled = false },
+        signature = { enabled = false },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
@@ -106,6 +106,21 @@ return {
         lsp_doc_border = true,        -- LSP 文档浮窗加边框
       },
     },
+  },
+
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "LspAttach",
+    opts = {
+      bind = true,
+      floating_window = true,
+      floating_window_above_cur_line = true,
+      hint_enable = false,
+      handler_opts = { border = "rounded" },
+    },
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
+    end,
   },
 
   -- nvim-cmp：在 NvChad 默认基础上额外支持 ↑/↓ 切换补全项

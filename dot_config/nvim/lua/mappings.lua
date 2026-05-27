@@ -1,13 +1,5 @@
 require "nvchad.mappings"
 
--- ============================================================================
--- 自定义键位（在 NvChad 默认之上叠加）
---
--- 与 NvChad 重复或冲突的已剔除：
---   * <C-s> 保存、<C-h/j/k/l> 切窗口、jk→Esc：NvChad 已有
---   * <leader>fm 格式化、<leader>ra rename：保留 NvChad 默认（弹窗 UI 更好）
--- ============================================================================
-
 local map = vim.keymap.set
 
 -- ---------- NvChad starter 原有 ----------
@@ -33,6 +25,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", o, { desc = "LSP Code Action" }))
     map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, vim.tbl_extend("force", o, { desc = "Next Diagnostic" }))
     map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, vim.tbl_extend("force", o, { desc = "Prev Diagnostic" }))
+
+    local function toggle_signature()
+      local ok, sig = pcall(require, "lsp_signature")
+      if ok then
+        sig.toggle_float_win()
+      else
+        vim.lsp.buf.signature_help()
+      end
+    end
+    map("n", "<leader>gs", toggle_signature,
+      vim.tbl_extend("force", o, { desc = "LSP Signature help (toggle)" }))
   end,
 })
 
