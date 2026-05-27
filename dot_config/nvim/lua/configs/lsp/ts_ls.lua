@@ -1,7 +1,7 @@
 -- TypeScript / JavaScript LSP（注入 @vue/typescript-plugin 支持 Vue 混合类型检查）
 return {
   cmd = { "typescript-language-server", "--stdio" },
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
   init_options = {
     plugins = {
