@@ -23,8 +23,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local o = { buffer = args.buf, silent = true }
     map("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", o, { desc = "LSP Hover" }))
     map("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", o, { desc = "LSP Code Action" }))
-    map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, vim.tbl_extend("force", o, { desc = "Next Diagnostic" }))
-    map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, vim.tbl_extend("force", o, { desc = "Prev Diagnostic" }))
+    map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end,
+      vim.tbl_extend("force", o, { desc = "Next Diagnostic" }))
+    map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end,
+      vim.tbl_extend("force", o, { desc = "Prev Diagnostic" }))
 
     local function toggle_signature()
       local ok, sig = pcall(require, "lsp_signature")
@@ -38,7 +40,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.tbl_extend("force", o, { desc = "LSP Signature help (toggle)" }))
   end,
 })
-
+map("n", "<leader>ih", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle Inlay Hints" })
 -- ---------- 移动 & 编辑（VSCode 风格） ----------
 -- 处理 wrap：j/k 按视觉行
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
